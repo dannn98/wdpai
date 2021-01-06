@@ -11,8 +11,9 @@ class DefaultController extends AppController {
         $this->render('login');
     }
 
-    public function projects() {
+    public function home() {
         //TODO display projects.html
-        die("projects method");
+
+        $this->render('home');
     }
 }
