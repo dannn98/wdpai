@@ -5,7 +5,7 @@ require_once 'AppController.php';
 class DefaultController extends AppController {
 
     public function index() {
-        //TODO display login.html
+        //TODO display login.php
         //die("index method");
 
         $this->render('login');
