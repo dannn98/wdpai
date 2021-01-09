@@ -1,189 +1,248 @@
-body {
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+/* :root {
+
+} */
+
+img {
+    display: block;
+}
+
+body {
+    margin: 0 auto;
 }
 
 /* LOGIN PAGE */
 
-.container {
+.login-container {
     width: 100vw;
     height: 100vh;
-    background: transparent linear-gradient(180deg, #CFCFCF 0%, #F8F8F8 100%) 0% 0% no-repeat padding-box;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
+    background-color: #443850;
 }
 
-.logo {
-    height: 25%;
+.login-logo {
+    margin-bottom: 40px;
     display: flex;
+    justify-content: center;
     align-items: center;
+
+    /* background-color: black; */
 }
 
-.login-container {
-    width: 25vw;
-    height: 20vh;
+.login-form {
+    width: 350px;
+    padding: 20px 5px 2px 5px;
+
     display: flex;
+    justify-content: center;
     align-items: center;
+
+    background-color: #F6F6F6;
+    border: solid black 1px;
+    border-radius: 2%;
 }
 
-.buttons {
-    width: 100%;
-    height: 25%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-form {
-    width: 100%;
-    height: 100%;
+.login-form > form {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
 }
 
-input {
-    padding: 0;
-    width: 100%;
-    height: 25%;
-    background: #F6F6F6 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
+.login-form > form > input {
+    width: 280px;
+    height: 2em;
+    margin: 10px 0 0 0;
 
     text-align: center;
-    font: italic normal normal 20px/27px Segoe UI;
-    letter-spacing: 0px;
-    color: #70707080;
+    font: normal normal normal 14px/21px Segoe UI;
 }
 
-button {
-    width: 40%;
-    height: 100%;
-    background: #DCDCDC 0% 0% no-repeat padding-box;
-    border: 1px solid #707070;
-    
+.login-form > form > button {
+    width: 280px;
+    height: 40px;
+    margin: 10px 0 0 0;
+
+    font: normal normal normal 14px/21px Segoe UI;
+}
+
+.login-form > form > p {
+    margin: 10px 0 10px 0;
     text-align: center;
-    font: normal normal normal 20px/27px Segoe UI;
-    letter-spacing: 0px;
-    color: #707070;
+    font: normal normal normal 12px/19px Segoe UI;
 }
 
 /* HOME PAGE */
 
 .home-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: transparent linear-gradient(180deg, #CFCFCF 0%, #F8F8F8 100%) 0% 0% no-repeat padding-box;
-}
-
-.header-nav{
-    width:100vw;
-    height: 120px;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 120px 1fr;
 }
 
 header {
     width: 100%;
-    height: 70px;
-    background-color: black;
+    height: 120px;
 
+    position: fixed;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 20;
 }
 
-nav {
+.home-header-top {
     width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #2C1A1D;
+}
+
+.home-header-bottom {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #6C534E;
+}
+
+.home-header {
+    width: 950px;
+    height: 70px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.home-nav {
+    width: 950px;
     height: 50px;
-    background-color: #707070;
 
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
 }
 
-.header-logo {
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header-logo img {
-    height: 90%;
-}
-
-.header-right-panel {
-    width: 80px;
-    height: 100%;
-
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.header-right-panel a{
-    height: 35%;
-}
-
-.header-right-panel img {
-    height: 100%;
-}
-
-nav a {
-    width: 100px;
-    height: 100%;
+nav.home-nav > a {
+    height: 50px;
+    margin-right: 10px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    font: normal normal 400 20px/27px Segoe UI;
-    letter-spacing: 1px;
-    color: #FFFFFF;
-}
-
-a {
+    color: #dcdcdc;
     text-decoration: none;
+    font: normal normal normal 18px/25px Segoe UI;
 }
 
 .home-content {
-    margin-top: 120px;
-    width: 100%;
-    height: calc(100% - 120px);
-
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.home-content-flex {
-    width: 100%;
-    height: 100%;
+.home-content-box {
+    width: 950px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
 }
 
-.home-photo{
-    width: 23%;
-    height: 48%;
-    background-color: thistle;
+.home-content-box-col {
+    width:310px;
+    padding-bottom: 10px;
+    /* background-color: burlywood; */
+}
+
+.home-content-box-photo {
+    margin-top: 10px;
+
+    border: 1px solid #CCCCCC;
+}
+
+.home-content-box-photo-img {
+    overflow: hidden;
+}
+
+.home-content-box-photo-img > img {
+    width: 100%;
+    display: block;
+
+    transition: 0.3s all ease-in-out; 
+}
+
+.home-content-box-photo-img > img:hover {
+    transform: scale(1.2); 
+}
+
+.home-content-box-photo-info {
+    width: 100%;
+    height: 3em;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+
+    background-color: #ECE8EF;
+}
+
+.home-content-box-photo-info > p {
+    padding-left: 3em;
+    padding-right: 3em;
+
+    font-family: Arial;
+    font-size: small;
+}
+
+p.home-name, p.home-type {
+    text-align: left;
+}
+
+p.home-likes, p.home-comments {
+    text-align: right;
+}
+
+p.home-type {
+    font-style: italic;
+}
+
+p.home-likes::before {
+    content: url(/public/img/like.svg);
+    display: inline-block;
+    margin-right: 3px;
+}
+
+p.home-comments::before {
+    content: url(/public/img/comment.svg);
+    display: inline-block;
+    margin-right: 3px;
+}
+
+@media (max-width: 768px) {
+    .home-content-box {
+        width: 325px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+    
+    .home-content-box-col {
+        width:325px;
+        padding-bottom: 10px;
+    }
 }
