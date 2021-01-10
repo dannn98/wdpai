@@ -7,6 +7,8 @@ class AppController {
     public function __construct()
     {
         $this->request = $_SERVER['REQUEST_METHOD'];
+
+        $this->repositories();
     }
 
     protected function isGet(): bool
@@ -32,5 +34,9 @@ class AppController {
         }
 
         print $output;
+    }
+
+    protected function repositories(){
+
     }
 }
