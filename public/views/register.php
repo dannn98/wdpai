@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <title>LOGIN PAGE</title>
+        <title>REGISTER PAGE</title>
     </head>
     <body>
         <div class="login-container">
@@ -11,19 +11,21 @@
                 <img src="public/img/logo-white.svg">
             </div>
             <div class="login-form">
-                <form action="login" method="POST">
+                <form action="signup" method="POST">
                     <div class="login-message">
                         <?php
-                            if(isset($messages))
+                            if(isset($messages)) {
                                 foreach ($messages as $message) {
                                     echo $message;
                                 }
+                            }
                         ?>
                     </div>
+                    <input name="nick" type="text" placeholder="nick">
                     <input name="email" type="text" placeholder="email@email.com">
                     <input name="password" type="password" placeholder="password">
-                    <button type="submit">Sign in</button>
-                    <p>Don't have an account? <a href="/register">Create account here</a></p>
+                    <button type="submit">Sign up</button>
+                    <p>Already have an account? <a href="/index">Login here</a></p>
                 </form>
             </div>
         </div>

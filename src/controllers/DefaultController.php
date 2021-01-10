@@ -20,4 +20,8 @@ class DefaultController extends AppController {
     public function photo() {
         $this->render('photo');
     }
+
+    public function register() {
+        $this->render('register');
+    }
 }

@@ -13,7 +13,7 @@ class SecurityController extends AppController
         $this->userRepository = new UserRepository();
     }
 
-    public function login(){
+    public function login() {
 
         if(!$this->isPost()) {
             return $this->login('login');
@@ -28,9 +28,9 @@ class SecurityController extends AppController
             return $this->render('login', ['messages' => ['User not exist!']]);
         }
 
-        if ($user->getEmail() !== $email) {
-            return $this->render('login', ['messages' => ['User with this email not exist!']]);
-        }
+//        if ($user->getEmail() !== $email) {
+//            return $this->render('login', ['messages' => ['User with this email not exist!']]);
+//        }
 
         if ($user->getPassword() !== $password) {
             return $this->render('login', ['messages' => ['Wrong password!']]);
@@ -40,5 +40,23 @@ class SecurityController extends AppController
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
+    }
+
+    public function signup() {
+        if(!$this->isPost()) {
+            return $this->signup('signup');
+        }
+
+        $nick = $_POST['nick'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $isEmail = $this->userRepository->getUser($email);
+
+        if(!$isEmail) {
+            die("Nie ma takiego maila");
+        }
+
+        die("Taki mail istnieje: ".$isEmail->getEmail()." ".$isEmail->getNick());
     }
 }

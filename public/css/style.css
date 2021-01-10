@@ -59,6 +59,11 @@ body {
     align-items: center;
 }
 
+.login-form > form > .login-message {
+    color: red;
+    font: normal normal normal 14px/21px Segoe UI;
+}
+
 .login-form > form > input {
     width: 280px;
     height: 2em;
