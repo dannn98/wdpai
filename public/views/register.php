@@ -11,7 +11,7 @@
                 <img src="public/img/logo-white.svg">
             </div>
             <div class="login-form">
-                <form action="signup" method="POST">
+                <form action="register" method="POST">
                     <div class="login-message">
                         <?php
                             if(isset($messages)) {

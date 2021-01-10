@@ -3,11 +3,12 @@
 class AppController {
 
     private $request;
+    protected $segments;
 
-    public function __construct()
+    public function __construct($segments)
     {
         $this->request = $_SERVER['REQUEST_METHOD'];
-
+        $this->segments = $segments;
         $this->repositories();
     }
 

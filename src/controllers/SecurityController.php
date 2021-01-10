@@ -16,7 +16,7 @@ class SecurityController extends AppController
     public function login() {
 
         if(!$this->isPost()) {
-            return $this->login('login');
+            $this->render('login');
         }
 
         $email = $_POST['email'];
@@ -42,9 +42,9 @@ class SecurityController extends AppController
         header("Location: {$url}/home");
     }
 
-    public function signup() {
+    public function register() {
         if(!$this->isPost()) {
-            return $this->signup('signup');
+            return $this->register('register');
         }
 
         $nick = $_POST['nick'];
