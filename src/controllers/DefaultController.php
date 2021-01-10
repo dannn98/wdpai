@@ -16,4 +16,8 @@ class DefaultController extends AppController {
 
         $this->render('home');
     }
+
+    public function photo() {
+        $this->render('photo');
+    }
 }

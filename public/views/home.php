@@ -14,14 +14,17 @@
                 <div class="home-header-top">
                     <div class="home-header">
                         <img src="public/img/logo-white.svg">
-                        <div style="color: white;">OPCJE</div> 
+                        <div class="home-header-panel">
+                            <a href="/profil"><img src="public/img/user.svg"></a>
+                            <a href="/logout"><img src="public/img/logout.svg"></a>
+                        </div> 
                     </div>
                 </div>
                 <div class="home-header-bottom">
                     <nav class="home-nav">
-                        <a href="/">HOME</a>
-                        <a href="#">PEOPLE</a>
-                        <a href="#">FOLDERS</a>
+                        <a href="/home">HOME</a>
+                        <a href="/">PEOPLE</a>
+                        <a href="/photo">FOLDERS</a>
                     </nav>
                 </div>
             </header>
@@ -31,7 +34,7 @@
                     <div class="home-content-box-col">
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/1.jpg">
+                                <img src="public/uploads/1.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -42,7 +45,7 @@
                         </div>
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/2.jpg">
+                                <img src="public/uploads/2.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                             <p class="home-name">JakiśNick</p>
@@ -53,7 +56,7 @@
                         </div>
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/3.png">
+                                <img src="public/uploads/3.png">
                             </div>
                             <div class="home-content-box-photo-info">
                             <p class="home-name">JakiśNick</p>
@@ -64,7 +67,7 @@
                         </div>
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/13.png">
+                                <img src="public/uploads/13.png">
                             </div>
                             <div class="home-content-box-photo-info">
                             <p class="home-name">JakiśNick</p>
@@ -77,7 +80,7 @@
                     <div class="home-content-box-col">
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/12.jpg">
+                                <img src="public/uploads/12.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -88,7 +91,7 @@
                         </div>
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/7.jpg">
+                                <img src="public/uploads/7.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -99,7 +102,7 @@
                         </div>
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/4.png">
+                                <img src="public/uploads/4.png">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -110,7 +113,7 @@
                         </div>
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/8.png">
+                                <img src="public/uploads/8.png">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -123,7 +126,7 @@
                     <div class="home-content-box-col">
                         <div class="home-content-box-photo">
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/5.png">
+                                <img src="public/uploads/5.png">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -134,7 +137,7 @@
                         </div>
                         <div class="home-content-box-photo" >
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/6.png">
+                                <img src="public/uploads/6.png">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -145,7 +148,7 @@
                         </div>
                         <div class="home-content-box-photo" >
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/9.jpg">
+                                <img src="public/uploads/9.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -156,7 +159,7 @@
                         </div>
                         <div class="home-content-box-photo" >
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/10.jpg">
+                                <img src="public/uploads/10.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
@@ -167,7 +170,7 @@
                         </div>
                         <div class="home-content-box-photo" >
                             <div class="home-content-box-photo-img">
-                                <img src="public/img/11.jpg">
+                                <img src="public/uploads/11.jpg">
                             </div>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
