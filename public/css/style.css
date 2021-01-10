@@ -27,7 +27,8 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-color: #443850;
+    background-color: #2C1A1D;
+    /* background-color: #443850; */
 }
 
 .login-logo {
@@ -130,6 +131,17 @@ header {
     align-items: center;
 }
 
+.home-header-panel {
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.home-header-panel > a > img {
+    height: 25px;
+}
+
 nav.home-nav {
     width: 950px;
     height: 50px;
@@ -140,7 +152,7 @@ nav.home-nav {
 
 nav.home-nav > a {
     height: 50px;
-    margin-right: 10px;
+    padding-inline: 10px;
 
     display: flex;
     justify-content: center;
@@ -149,6 +161,11 @@ nav.home-nav > a {
     color: #dcdcdc;
     text-decoration: none;
     font: normal normal normal 18px/25px Segoe UI;
+}
+
+nav.home-nav > a:hover {
+    background-color: #2C1A1D;
+    color: whitesmoke;
 }
 
 .home-content {
@@ -170,7 +187,7 @@ nav.home-nav > a {
 
 .home-content-box-photo {
     margin-top: 10px;
-
+    
     border: 1px solid #CCCCCC;
 }
 
@@ -198,15 +215,14 @@ nav.home-nav > a {
     grid-template-rows: 1fr 1fr;
     align-items: center;
 
-    background-color: #ECE8EF;
+    background-color: whitesmoke;
 }
 
 .home-content-box-photo-info > p {
     padding-left: 3em;
     padding-right: 3em;
 
-    font-family: Arial;
-    font-size: small;
+    font: normal normal normal 14px/21px Segoe UI;
 }
 
 p.home-name, p.home-type {
@@ -233,6 +249,59 @@ p.home-comments::before {
     margin-right: 3px;
 }
 
+/* PHOTO PAGE */
+
+.photo-content-box {
+    width: 950px;
+    display: flex;
+}
+
+.photo-content-box-img {
+    width: 570px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo-content-box-img > img {
+    width: 97%;
+
+    border: 1px solid #CCCCCC;
+    box-shadow: 0px 0px 29px 8px rgba(0,0,0,0.2);
+}
+
+.photo-content-box-properties{
+    width: 380px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.photo-properties-box {
+    padding: 20px;
+    width: 97%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background-color:whitesmoke;
+    border: 1px solid #CCCCCC;
+
+    font: normal normal normal 14px/21px Segoe UI;
+}
+
+.photo-properties-box > h2::before {
+    content: url(/public/img/like.svg);
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.photo-comments {
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .home-content-box {
         width: 325px;
@@ -244,5 +313,31 @@ p.home-comments::before {
     .home-content-box-col {
         width:325px;
         padding-bottom: 10px;
+    }
+
+    .photo-content-box {
+        width: 325px;
+        flex-direction: column;
+    }
+
+    .photo-content-box-img {
+        width: 100%;
+        padding: 0;
+        padding-top: 10px;
+    }
+
+    .photo-content-box-img > img {
+        width: 100%;
+    }
+
+    .photo-content-box-properties{
+        width: 100%;
+        padding: 0;
+        padding-top: 10px;
+    }
+    
+    .photo-properties-box {
+        padding: 20px;
+        width: 100%;
     }
 }
