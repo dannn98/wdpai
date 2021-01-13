@@ -25,7 +25,7 @@ class SecurityController extends AppController
         $user = $this->userRepository->getUser($email);
 
         if(!$user) {
-            return $this->render('login', ['messages' => ['User not exist!']]);
+            $this->render('login', ['messages' => ['User not exist!']]);
         }
 
 //        if ($user->getEmail() !== $email) {
@@ -33,7 +33,7 @@ class SecurityController extends AppController
 //        }
 
         if ($user->getPassword() !== $password) {
-            return $this->render('login', ['messages' => ['Wrong password!']]);
+            $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
 //        return $this->render('home');
@@ -53,10 +53,18 @@ class SecurityController extends AppController
 
         $isEmail = $this->userRepository->getUser($email);
 
-        if(!$isEmail) {
-            die("Nie ma takiego maila");
+        if($isEmail) {
+            $this->render('register', ['messages' => ['This email is already taken']]);
         }
 
-        die("Taki mail istnieje: ".$isEmail->getEmail()." ".$isEmail->getNick());
+        if($this->userRepository->isNickExist($nick)) {
+            $this->render('register', ['messages' => ['This nick is already taken']]);
+        }
+
+        if(!$this->userRepository->addUser($nick, $email, $password)){
+            die("Something went wrong with create new account (register)");
+        }
+
+        $this->render('home');
     }
 }
