@@ -38,13 +38,12 @@ class SecurityController extends AppController
 
 //        return $this->render('home');
 
-        $url = "http://$_SERVER[HTTP_HOST]";
-        header("Location: {$url}/home");
+        $this->redirect("home");
     }
 
     public function register() {
         if(!$this->isPost()) {
-            return $this->register('register');
+            return $this->render('register');
         }
 
         $nick = $_POST['nick'];
@@ -64,6 +63,6 @@ class SecurityController extends AppController
             die("Something went wrong with create new account (register)");
         }
 
-        return $this->render('home');
+        $this->redirect("home");
     }
 }

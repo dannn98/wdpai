@@ -37,6 +37,11 @@ class AppController {
         print $output;
     }
 
+    protected function redirect($direct) {
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/{$direct}");
+    }
+
     protected function repositories(){
 
     }

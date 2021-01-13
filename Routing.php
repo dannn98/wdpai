@@ -21,7 +21,7 @@ class Routing {
 
                 $controller = $route->getController();
                 $object = new $controller(explode("/", $url));
-                $action = $route->getAction() ?: 'index';
+                $action = $route->getAction() ?: 'login';
 
                 $object->$action();
                 return;
