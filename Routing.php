@@ -1,9 +1,11 @@
 <?php
 
-require_once 'src/controllers/DefaultController.php';
-require_once 'src/controllers/SecurityController.php';
 require_once 'src/routing/Route.php';
 require_once 'src/routing/RouteCollection.php';
+require_once 'src/controllers/DefaultController.php';
+require_once 'src/controllers/SecurityController.php';
+require_once 'src/controllers/PhotoController.php';
+require_once 'src/AuthenticationGuard.php';
 
 class Routing {
     public static RouteCollection $routes;
@@ -18,10 +20,11 @@ class Routing {
 
         foreach (self::$routes as $route) {
             if($route->getUrl() == $action && $route->getMethod() == $_SERVER['REQUEST_METHOD']) {
+                AuthenticationGuard::checkAuthentication($url);
 
                 $controller = $route->getController();
                 $object = new $controller(explode("/", $url));
-                $action = $route->getAction() ?: 'login';
+                $action = $route->getAction() ?: 'home';
 
                 $object->$action();
                 return;

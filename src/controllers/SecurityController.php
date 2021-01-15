@@ -3,6 +3,7 @@
 require_once 'AppController.php';
 require_once __DIR__.'/../models/User.php';
 require_once __DIR__.'/../repository/UserRepository.php';
+require_once __DIR__.'/../AuthenticationGuard.php';
 
 class SecurityController extends AppController
 {
@@ -28,15 +29,11 @@ class SecurityController extends AppController
             $this->render('login', ['messages' => ['User not exist!']]);
         }
 
-//        if ($user->getEmail() !== $email) {
-//            return $this->render('login', ['messages' => ['User with this email not exist!']]);
-//        }
-
         if ($user->getPassword() !== $password) {
             $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-//        return $this->render('home');
+        AuthenticationGuard::authenticateUser($user);
 
         $this->redirect("home");
     }
@@ -63,6 +60,11 @@ class SecurityController extends AppController
             die("Something went wrong with create new account (register)");
         }
 
-        $this->redirect("home");
+        $this->redirect("login");
+    }
+
+    public function logout() {
+        AuthenticationGuard::cancelAuthentication();
+        $this->redirect("login");
     }
 }

@@ -2,6 +2,7 @@
 
 require 'Routing.php';
 require_once 'src/routing/RouteCollection.php';
+require_once 'src/AuthenticationGuard.php';
 
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
@@ -19,6 +20,11 @@ Routing::route('register', 'SecurityController', 'register', 'POST');
 Routing::route('home', 'DefaultController', 'home', 'GET');
 Routing::route('photo', 'DefaultController', 'photo', 'GET');
 
+Routing::route('upload', 'DefaultController', 'upload', 'GET');
+Routing::route('upload', 'PhotoController', 'upload', 'POST');
 
+Routing::route('logout', 'SecurityController', 'logout', 'GET');
+
+AuthenticationGuard::protectURL(['', 'index','home']);
 
 Routing::run($path);
