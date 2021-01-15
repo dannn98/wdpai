@@ -33,9 +33,11 @@
                 <div class="home-content-box">
                     <div class="home-content-box-col">
                         <div class="home-content-box-photo">
-                            <div class="home-content-box-photo-img">
-                                <img src="public/uploads/1.jpg">
-                            </div>
+                            <a href="/photo">
+                                <div class="home-content-box-photo-img">
+                                    <img src="public/uploads/1.jpg">
+                                </div>
+                            </a>
                             <div class="home-content-box-photo-info">
                                 <p class="home-name">JakiśNick</p>
                                 <p class="home-likes"><span>943</span></p>

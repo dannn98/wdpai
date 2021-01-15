@@ -169,8 +169,8 @@ nav.home-nav > a {
 }
 
 nav.home-nav > a:hover {
-    background-color: #2C1A1D;
-    color: whitesmoke;
+    /* background-color: #2C1A1D; */
+    color: white;
 }
 
 .home-content {
@@ -259,6 +259,7 @@ p.home-comments::before {
 .photo-content-box {
     width: 950px;
     display: flex;
+    align-items: flex-start;
 }
 
 .photo-content-box-img {
@@ -297,6 +298,14 @@ p.home-comments::before {
     font: normal normal normal 14px/21px Segoe UI;
 }
 
+.photo-properties-box > p {
+    margin-top: 5px;
+}
+
+.photo-properties-box > h2 {
+    margin-top: 5px;
+}
+
 .photo-properties-box > h2::before {
     content: url(/public/img/like.svg);
     display: inline-block;
@@ -304,8 +313,86 @@ p.home-comments::before {
 }
 
 .photo-comments {
+    margin-top: 20px;
+    width: 100%;
+    min-height: 480px;
+    max-height: 480px;
+    overflow: auto;
+
+    border: 1px solid #CCCCCC;
+    background-color: white;
+}
+
+.comment {
+    width: 100%;
+    padding: 10px
+}
+
+.comment > .author {
+    font-style: italic;
+    color: #AAAAAA;
+}
+
+.comment > .comment-content {
+    word-wrap: break-word;
+}
+
+.comment > hr {
+    border-top: 1px solid #CCCCCC;
+}
+
+.photo-add-comment {
+    margin-top: 20px;
     width: 100%;
 }
+
+.photo-add-comment > textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+
+    resize: none;
+    font: normal normal normal 14px/21px Segoe UI;
+    border: 1px solid #CCCCCC;
+}
+
+.photo-add-comment > button {
+    width: 40%;
+    height: 30px;
+    margin: 2px 0 0 0;
+    float: right;
+
+    font: normal normal normal 14px/21px Segoe UI;
+}
+
+/* UPLOAD PHOTO */
+
+.upload-box {
+    width: 950px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-box > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width: 768px) {
     .home-content-box {
@@ -338,7 +425,7 @@ p.home-comments::before {
     .photo-content-box-properties{
         width: 100%;
         padding: 0;
-        padding-top: 10px;
+        padding: 10px 0 10px 0;
     }
     
     .photo-properties-box {
