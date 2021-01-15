@@ -3,7 +3,7 @@
 require_once "Repository.php";
 require_once __DIR__.'/../models/Photo.php';
 
-class UserRepository extends Repository
+class PhotoRepository extends Repository
 {
 
     public function getPhoto(int $id): ?Photo
@@ -22,21 +22,23 @@ class UserRepository extends Repository
         }
 
         return new Photo(
-            $photo['id'],
             $photo['title'],
-            $photo['image'],
-            $photo['id_user']
+            $photo['image']
         );
     }
 
-//    public function addUser($nick, $email, $password): bool {
-//        $stmt = $this->database->connect()->prepare('
-//            INSERT INTO public.users (nick, email, password) VALUES (:nick, :email, :password)
-//        ');
-//        $stmt->bindParam(':nick', $nick, PDO::PARAM_STR);
-//        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-//        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-//
-//        return $stmt->execute();
-//    }
+    public function addPhoto(Photo $photo): bool {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.photos (title, image, id_user) VALUES (?, ?, ?)
+        ');
+
+        //TODO
+        $id_user = 1;
+
+        return $stmt->execute([
+            $photo->getTitle(),
+            $photo->getImage(),
+            $id_user
+        ]);
+    }
 }

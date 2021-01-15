@@ -2,6 +2,7 @@
 
 require_once 'AppController.php';
 require_once __DIR__.'/../models/Photo.php';
+require_once __DIR__.'/../repository/PhotoRepository.php';
 
 class PhotoController extends AppController {
 
@@ -10,19 +11,28 @@ class PhotoController extends AppController {
     const UPLOAD_DIRECTORY = '/../public/uploads/';
 
     private $messages = [];
+    private Repository $photoRepository;
+
+    protected function repositories()
+    {
+        $this->photoRepository = new PhotoRepository();
+    }
 
     public function upload() {
 
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
 
+            $uniqname = uniqid().".".explode("/", $_FILES['file']['type'])[1];
+
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
-                dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
+                dirname(__DIR__).self::UPLOAD_DIRECTORY.$uniqname
             );
 
-            //TODO
-            $photo = new Photo(null, $_POST['title'], $_FILES['file']['name'], 1);
-            $this->messages[] = 'File was uploaded: '.$photo->getTitle();
+            $photo = new Photo($_POST['title'], $uniqname);
+            $this->photoRepository->addPhoto($photo);
+            //TODO EDIT THIS MESSAGE
+            $this->messages[] = 'File was uploaded: '.$photo->getImage();
 
             return $this->render('upload', ['messages' => $this->messages]);
         }

@@ -43,20 +43,17 @@ class SecurityController extends AppController
             return $this->render('register');
         }
 
-        $nick = $_POST['nick'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $user = new User($_POST['nick'], $_POST['email'], $_POST['password']);
+        $userTest = $this->userRepository->getUser($user->getEmail(), $user->getNick());
 
-        $user = $this->userRepository->getUser($email, $nick);
-
-        if($user) {
-           if($user->getEmail() === $email) {
+        if($userTest) {
+           if($userTest->getEmail() === $user->getEmail()) {
                return $this->render('register', ['messages' => ['This email is already taken']]);
            }
            return $this->render('register', ['messages' => ['This nick is already taken']]);
         }
 
-        if(!$this->userRepository->addUser($nick, $email, $password)){
+        if(!$this->userRepository->addUser($user)){
             die("Something went wrong with create new account (register)");
         }
 

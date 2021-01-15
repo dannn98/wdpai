@@ -36,14 +36,15 @@ class UserRepository extends Repository
         );
     }
 
-    public function addUser($nick, $email, $password): bool {
+    public function addUser(User $user): bool {
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO public.users (nick, email, password) VALUES (:nick, :email, :password)
+            INSERT INTO public.users (nick, email, password) VALUES (?, ?, ?)
         ');
-        $stmt->bindParam(':nick', $nick, PDO::PARAM_STR);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
 
-        return $stmt->execute();
+        return $stmt->execute([
+            $user->getNick(),
+            $user->getEmail(),
+            $user->getPassword()
+        ]);
     }
 }
