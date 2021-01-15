@@ -33,7 +33,7 @@ class SecurityController extends AppController
             $this->render('login', ['messages' => ['Wrong password!']]);
         }
 
-        AuthenticationGuard::authenticateUser($user);
+        AuthenticationGuard::authenticateUser($this->userRepository->getUserId($user));
 
         $this->redirect("home");
     }
