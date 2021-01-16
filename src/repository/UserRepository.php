@@ -44,7 +44,7 @@ class UserRepository extends Repository
         return $stmt->execute([
             $user->getNick(),
             $user->getEmail(),
-            $user->getPassword()
+            password_hash($user->getPassword(), PASSWORD_BCRYPT)
         ]);
     }
 

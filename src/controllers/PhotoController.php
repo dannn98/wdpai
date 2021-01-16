@@ -24,19 +24,24 @@ class PhotoController extends AppController {
 
             $uniqname = uniqid().".".explode("/", $_FILES['file']['type'])[1];
 
+            $photo = new Photo($_POST['title'], $uniqname);
+            if(!$this->photoRepository->addPhoto($photo)) {
+                $this->messages[] = 'Database error';
+                $this->render('upload', ['messages' => $this->messages]);
+                return;
+            }
+
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$uniqname
             );
 
-            $photo = new Photo($_POST['title'], $uniqname);
-            $this->photoRepository->addPhoto($photo);
-            //TODO EDIT THIS MESSAGE
-            $this->messages[] = 'File was uploaded: '.$photo->getImage();
-
-            return $this->render('upload', ['messages' => $this->messages]);
+            $this->messages[] = 'Photo uploaded successfully';
+            $this->render('upload', ['messages' => $this->messages]);
+            return;
         }
 
+        $this->messages[] = 'Something is wrong';
         $this->render('upload', ['messages' => $this->messages]);
     }
 

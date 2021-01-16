@@ -18,6 +18,7 @@ class SecurityController extends AppController
 
         if(!$this->isPost()) {
             $this->render('login');
+            return;
         }
 
         $email = $_POST['email'];
@@ -27,10 +28,12 @@ class SecurityController extends AppController
 
         if(!$user) {
             $this->render('login', ['messages' => ['User not exist!']]);
+            return;
         }
 
-        if ($user->getPassword() !== $password) {
+        if (!password_verify($password, $user->getPassword())) {
             $this->render('login', ['messages' => ['Wrong password!']]);
+            return;
         }
 
         AuthenticationGuard::authenticateUser($this->userRepository->getUserId($user));
@@ -40,17 +43,20 @@ class SecurityController extends AppController
 
     public function register() {
         if(!$this->isPost()) {
-            return $this->render('register');
+            $this->render('register');
+            return;
         }
 
         $user = new User($_POST['nick'], $_POST['email'], $_POST['password']);
-        $userTest = $this->userRepository->getUser($user->getEmail(), $user->getNick());
+        $isExist = $this->userRepository->getUser($user->getEmail(), $user->getNick());
 
-        if($userTest) {
-           if($userTest->getEmail() === $user->getEmail()) {
-               return $this->render('register', ['messages' => ['This email is already taken']]);
+        if($isExist) {
+           if($isExist->getEmail() === $user->getEmail()) {
+               $this->render('register', ['messages' => ['This email is already taken']]);
+               return;
            }
-           return $this->render('register', ['messages' => ['This nick is already taken']]);
+           $this->render('register', ['messages' => ['This nick is already taken']]);
+           return;
         }
 
         if(!$this->userRepository->addUser($user)){

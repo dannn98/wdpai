@@ -35,6 +35,10 @@ class AuthenticationGuard
         }
     }
 
+    public static function getCurrentUserId(): ?int {
+        return self::$tokenRepository->getUserId($_COOKIE['mstory-token']);
+    }
+
     private static function validateCookie(): bool {
         return self::$tokenRepository->checkToken($_COOKIE['mstory-token']);
     }

@@ -43,4 +43,21 @@ class TokenRepository extends Repository
         $stmt->bindParam(':token', $hashed, PDO::PARAM_STR);
         $stmt->execute();
     }
+
+    public function getUserId($key): ?int {
+        $hashed = md5($key.$_SERVER['REMOTE_ADDR']);
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT id_user FROM public.authentication_tokens WHERE token = :token
+        ');
+        $stmt->bindParam(':token', $hashed, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($result == false) {
+            return null;
+        }
+
+        return $result['id_user'];
+    }
 }

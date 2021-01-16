@@ -2,6 +2,7 @@
 
 require_once "Repository.php";
 require_once __DIR__.'/../models/Photo.php';
+require_once __DIR__.'/../AuthenticationGuard.php';
 
 class PhotoRepository extends Repository
 {
@@ -32,8 +33,10 @@ class PhotoRepository extends Repository
             INSERT INTO public.photos (title, image, id_user) VALUES (?, ?, ?)
         ');
 
-        //TODO
-        $id_user = 1;
+        $id_user = AuthenticationGuard::getCurrentUserId();
+        if(!$id_user) {
+            return false;
+        }
 
         return $stmt->execute([
             $photo->getTitle(),
