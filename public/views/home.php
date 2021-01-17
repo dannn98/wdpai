@@ -29,13 +29,14 @@
             <div class="home-under-header"></div>
             <div class="home-content">
                 <div class="home-content-box">
-                    <div class="home-content-box-col" id="col-1">
+                    <div id="loader"></div>
+                    <div class="home-content-box-col animate-bottom" id="col-1">
 
                     </div>
-                    <div class="home-content-box-col" id="col-2">
+                    <div class="home-content-box-col animate-bottom" id="col-2">
 
                     </div>
-                    <div class="home-content-box-col" id="col-3">
+                    <div class="home-content-box-col animate-bottom" id="col-3">
 
                     </div>
                 </div>

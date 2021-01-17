@@ -184,10 +184,41 @@ nav.home-nav > a:hover {
     justify-content: space-between;
 }
 
+#loader {
+    z-index: 1;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: calc(50vh - 120px);
+    left: calc(50%);
+
+    border: 14px solid whitesmoke;
+    border-radius: 50%;
+    border-top: 14px solid #6C534E;
+    animation: spin 2s linear infinite;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .home-content-box-col {
     width:310px;
     padding-bottom: 10px;
-    /* background-color: burlywood; */
+    display: none;
+}
+
+.animate-bottom {
+    position: relative;
+
+    animation-name: animatebottom;
+    animation-duration: 1s
+}
+
+@keyframes animatebottom { 
+    from{ bottom:-100px; opacity:0 } 
+    to{ bottom:0; opacity:1 }
 }
 
 .home-content-box-photo {

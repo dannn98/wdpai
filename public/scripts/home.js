@@ -67,6 +67,12 @@ fetch('http://localhost:8080/photos', {
                 col_1.appendChild(photo.addPhoto(data[i]));
             }
         }
+        
+        document.getElementById("loader").style.display = "none";
+        let cols = document.getElementsByClassName("home-content-box-col");
+        for(let i = 0; i < cols.length; i++) {
+            cols[i].style.display = "block";
+        }
     })
     .catch((error) => {
         console.error('Error:', error);
