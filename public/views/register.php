@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="public/css/style.css">
-        <script src="/public/scripts/register.js" defer></script>
+        <script type="text/javascript" src="/public/scripts/register.js" defer></script>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>REGISTER PAGE</title>
     </head>

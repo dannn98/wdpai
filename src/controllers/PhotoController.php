@@ -18,6 +18,12 @@ class PhotoController extends AppController {
         $this->photoRepository = new PhotoRepository();
     }
 
+    public function photos($id_last = null) {
+        $photos = $this->photoRepository->getPhotos();
+        header('Content-type: application/json');
+        echo json_encode($photos);
+    }
+
     public function upload() {
 
         if($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {

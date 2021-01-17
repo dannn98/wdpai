@@ -3,15 +3,27 @@
 
 class User
 {
+    private $id;
     private $nick;
     private $email;
     private $password;
 
-    public function __construct(string $nick, string $email, string $password)
+    public function __construct(string $nick, string $email, string $password = null, $id = null)
     {
+        $this->id = $id;
         $this->nick = $nick;
         $this->email = $email;
         $this->password = $password;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     public function getEmail(): string

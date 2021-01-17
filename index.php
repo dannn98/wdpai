@@ -18,6 +18,7 @@ Routing::route('register', 'DefaultController', 'register', 'GET');
 Routing::route('register', 'SecurityController', 'register', 'POST');
 
 Routing::route('home', 'DefaultController', 'home', 'GET');
+Routing::route('photos', 'PhotoController', 'photos', 'GET');
 Routing::route('photo', 'DefaultController', 'photo', 'GET');
 
 Routing::route('upload', 'DefaultController', 'upload', 'GET');

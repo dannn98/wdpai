@@ -211,6 +211,17 @@ nav.home-nav > a:hover {
     transform: scale(1.2); 
 }
 
+.home-content-box-photo-title {
+    width:100%;
+    padding: 3px;
+
+    word-wrap: break-word;
+    /* text-align: center; */
+    font: normal normal normal 16px/23px Segoe UI;
+    /* border-bottom: 1px solid #CCCCCC; */
+    background-color: whitesmoke;
+}
+
 .home-content-box-photo-info {
     width: 100%;
     height: 3em;
@@ -224,8 +235,8 @@ nav.home-nav > a:hover {
 }
 
 .home-content-box-photo-info > p {
-    padding-left: 3em;
-    padding-right: 3em;
+    padding-left: 3px;
+    padding-right: 3px;
 
     font: normal normal normal 14px/21px Segoe UI;
 }
