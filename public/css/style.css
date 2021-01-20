@@ -313,8 +313,8 @@ p.home-comments::before {
 }
 
 .photo-content-box-img > img {
-    width: 97%;
-
+    max-width: 97%;
+    max-height: 772px;
     border: 1px solid #CCCCCC;
     box-shadow: 0px 0px 29px 8px rgba(0,0,0,0.2);
 }
@@ -357,7 +357,7 @@ p.home-comments::before {
 .photo-comments {
     margin-top: 20px;
     width: 100%;
-    min-height: 480px;
+    /* min-height: 480px; */
     max-height: 480px;
     overflow: auto;
 
@@ -367,7 +367,8 @@ p.home-comments::before {
 
 .comment {
     width: 100%;
-    padding: 10px
+    padding: 10px;
+    border-bottom: 1px solid #CCCCCC;
 }
 
 .comment > .author {
@@ -377,10 +378,6 @@ p.home-comments::before {
 
 .comment > .comment-content {
     word-wrap: break-word;
-}
-
-.comment > hr {
-    border-top: 1px solid #CCCCCC;
 }
 
 .photo-add-comment {

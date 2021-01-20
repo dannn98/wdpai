@@ -24,24 +24,24 @@ class PhotoRepository extends Repository
         ]);
     }
 
-    public function getPhoto(int $id): ?Photo
-    {
+    public function getPhoto(int $id_photo) {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.photos WHERE id = :id
+            SELECT photos.id as id_photo,
+                   photos.title as title,
+                   photos.image as image,
+                   photos.id_user as id_user,
+                   u.nick as nick,
+                   (
+                       SELECT COUNT(*) FROM photos_likes WHERE photos_likes.id_photo = photos.id
+                   ) as likes
+            FROM photos
+            JOIN users u on u.id = photos.id_user
+            WHERE photos.id = :id_photo;
         ');
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
         $stmt->execute();
 
-        $photo = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if($photo == false) {
-            return null;
-        }
-
-        return new Photo(
-            $photo['title'],
-            $photo['image']
-        );
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function getPhotos($id_last = null) {
@@ -66,5 +66,23 @@ class PhotoRepository extends Repository
 
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
+    }
+
+    public function getComments(int $id_photo) {
+        $stmt = $this->database->connect()->prepare('
+            SELECT id_user as id_user,
+                   u.nick as nick,
+                   content as content,
+                   created_at as created_at
+            FROM photos_comments
+            JOIN users u on u.id = photos_comments.id_user
+            WHERE photos_comments.id_photo = :id_photo;
+        ');
+        $stmt->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
     }
 }

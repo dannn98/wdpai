@@ -18,6 +18,24 @@ class PhotoController extends AppController {
         $this->photoRepository = new PhotoRepository();
     }
 
+    public function photo() {
+        $id_photo = $this->segments[1];
+
+        if($id_photo == null) {
+            die("Photo doesn't exist!");
+        }
+
+        $photo = $this->photoRepository->getPhoto($id_photo);
+
+        if($photo == false) {
+            die("Photo doesn't exist!");
+        }
+
+        $comments = $this->photoRepository->getComments($id_photo);
+
+        $this->render('photo', ['photo' => $photo, 'comments' => $comments]);
+    }
+
     public function photos($id_last = null) {
         $photos = $this->photoRepository->getPhotos();
         header('Content-type: application/json');
