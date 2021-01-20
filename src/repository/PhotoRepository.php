@@ -60,7 +60,7 @@ class PhotoRepository extends Repository
                        ) as comments
                 FROM photos
                 JOIN users u on u.id = photos.id_user
-                ORDER BY photos.id DESC LIMIT 10;
+                ORDER BY photos.id DESC LIMIT 12;
             ');
             $stmt->execute();
 

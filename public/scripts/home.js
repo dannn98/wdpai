@@ -54,13 +54,13 @@ fetch('http://localhost:8080/photos', {
         const col_1 = document.getElementById("col-1");
         const col_2 = document.getElementById("col-2");
         const col_3 = document.getElementById("col-3");
-
         for(let i = 0, c = 1; i < data.length; i++, c++) {
             let photo = new Photo();
-            if((c) % 3 === 0){
+            if(c === 3){
                 col_3.appendChild(photo.addPhoto(data[i]));
+                c = 0;
             }
-            else if(c % 2 === 0) {
+            else if(c === 2) {
                 col_2.appendChild(photo.addPhoto(data[i]));
             }
             else {
