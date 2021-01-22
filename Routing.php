@@ -18,9 +18,10 @@ class Routing {
     public static function run($url) {
         $action = explode("/", $url)[0];
 
+        //One to one
         foreach (self::$routes as $route) {
             if($route->getUrl() == $action && $route->getMethod() == $_SERVER['REQUEST_METHOD']) {
-                AuthenticationGuard::checkAuthentication($url);
+                AuthenticationGuard::checkAuthentication($action);
 
                 $controller = $route->getController();
                 $object = new $controller(explode("/", $url));
@@ -31,7 +32,36 @@ class Routing {
             }
         }
 
-        die("Wrong url!");
+        $URL_parts = explode("/", $url);
+        $URL_size = count($URL_parts);
+        foreach(self::$routes as $route) {
+            $isEqual = true;
+            $action = "";
+            $URL_parts_yaml = explode("/", $route->getUrl());
+            if(count($URL_parts_yaml) == $URL_size && $route->getMethod() == $_SERVER['REQUEST_METHOD']){
+                for($i = 0; $i < $URL_size; $i++) {
+                    if($URL_parts[$i] == $URL_parts_yaml[$i]) {
+                        $action = $action.$URL_parts_yaml[$i];
+                    }
+                    else {
+                        $isEqual = false;
+                        break;
+                    }
+                }
+                if($isEqual) {
+                    AuthenticationGuard::checkAuthentication($action);
+
+                    $controller = $route->getController();
+                    $object = new $controller(explode("/", $url));
+                    $action = $route->getAction() ?: 'home';
+
+                    $object->$action();
+                    return;
+                }
+            }
+        }
+
+        http_response_code(404);
     }
 
     public static function init($routeCollection) {
