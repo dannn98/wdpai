@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+        <script type="text/javascript" src="/public/scripts/photo_comment.js" defer></script>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>PHOTO PAGE</title>
     </head>
@@ -36,8 +37,17 @@
                             <h1><?php echo $photo['nick']; ?></h1>
                             <p>DO ZMIANY</p>
                             <h2><?php echo $photo['likes'] ?></h2>
-                            <form class="photo-add-comment">
-                                <textarea name="comment" placeholder="Add comment"></textarea>
+                            <form class="photo-add-comment" action="comment" method="POST">
+                                <div class="login-message">
+                                    <?php
+                                        if(isset($messages))
+                                            foreach ($messages as $message) {
+                                                echo $message;
+                                            }
+                                    ?>
+                                </div>
+                                <input type="hidden" name="id_photo" value="<?php echo $photo['id_photo']; ?>">
+                                <textarea id="comment" name="comment" placeholder="Add comment"></textarea>
                                 <button type="submit">Dodaj</button>
                             </form>
                             <div class="photo-comments">

@@ -68,6 +68,26 @@ class PhotoRepository extends Repository
         }
     }
 
+    public function addComment($id_photo, $content) {
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO public.photos_comments (id_photo, id_user, content, created_at) VALUES (?, ?, ?, ?)
+        ');
+
+        $id_user = AuthenticationGuard::getCurrentUserId();
+        $created_at = new DateTime();
+
+        if(!$id_user) {
+            return false;
+        }
+
+        return $stmt->execute([
+            $id_photo,
+            $id_user,
+            $content,
+            $created_at->format('Y-m-d')
+        ]);
+    }
+
     public function getComments(int $id_photo) {
         $stmt = $this->database->connect()->prepare('
             SELECT id_user as id_user,

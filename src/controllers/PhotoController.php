@@ -21,14 +21,16 @@ class PhotoController extends AppController {
     public function photo() {
         $id_photo = $this->segments[1];
 
-        if($id_photo == null) {
-            die("Photo doesn't exist!");
+        if($id_photo == null || !is_numeric($id_photo)) {
+            http_response_code(404);
+            return;
         }
 
         $photo = $this->photoRepository->getPhoto($id_photo);
 
         if($photo == false) {
-            die("Photo doesn't exist!");
+            http_response_code(404);
+            return;
         }
 
         $comments = $this->photoRepository->getComments($id_photo);
@@ -67,6 +69,17 @@ class PhotoController extends AppController {
 
         $this->messages[] = 'Something is wrong';
         $this->render('upload', ['messages' => $this->messages]);
+    }
+
+    public function addComment() {
+        $id_photo = $_POST['id_photo'];
+        $content = $_POST['comment'];
+        if(!$this->photoRepository->addComment($id_photo, $content)) {
+            die("Something went wrong!");
+        }
+        else {
+            $this->redirect("photo/".$id_photo);
+        }
     }
 
     private function validate(array $file): bool {

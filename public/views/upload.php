@@ -31,7 +31,7 @@
             <div class="home-under-header"></div>
             <div class="home-content">
                 <div class="upload-box">
-                    <h1>Upload photo</h1>
+                    <p>UPLOAD PHOTO</p>
                     <form action="upload" method="POST" enctype="multipart/form-data">
                         <div class="login-message">
                             <?php

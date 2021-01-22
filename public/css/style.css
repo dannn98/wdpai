@@ -59,7 +59,7 @@ body {
     align-items: center;
 }
 
-.login-form > form > .login-message {
+form > .login-message {
     color: red;
     font: normal normal normal 14px/21px Segoe UI;
 }
@@ -408,6 +408,7 @@ p.home-comments::before {
 
 .upload-box {
     width: 950px;
+    padding: 10px;
 
     display: flex;
     flex-direction: column;
@@ -415,11 +416,32 @@ p.home-comments::before {
     align-items: center;
 }
 
+.upload-box > p {
+    font: normal normal normal 20px/27px Segoe UI;
+}
+
 .upload-box > form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.upload-box > form > input {
+    width: 280px;
+    height: 2em;
+    margin: 10px 0 0 0;
+
+    text-align: center;
+    font: normal normal normal 14px/21px Segoe UI;
+}
+
+.upload-box > form > button {
+    width: 280px;
+    height: 30px;
+    margin: 10px 0 0 0;
+
+    font: normal normal normal 14px/21px Segoe UI;
 }
 
 

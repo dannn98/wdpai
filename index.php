@@ -20,12 +20,13 @@ Routing::route('register', 'SecurityController', 'register', 'POST');
 Routing::route('home', 'DefaultController', 'home', 'GET');
 Routing::route('photos', 'PhotoController', 'photos', 'GET');
 Routing::route('photo', 'PhotoController', 'photo', 'GET');
+Routing::route('photo/comment', 'PhotoController', 'addComment', 'POST');
 
 Routing::route('upload', 'DefaultController', 'upload', 'GET');
 Routing::route('upload', 'PhotoController', 'upload', 'POST');
 
 Routing::route('logout', 'SecurityController', 'logout', 'GET');
 
-AuthenticationGuard::protectURL(['', 'index','home']);
+AuthenticationGuard::protectURL(['', 'index','home', 'upload', 'photo','photo/comment']);
 
 Routing::run($path);
