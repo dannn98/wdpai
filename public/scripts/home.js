@@ -37,7 +37,7 @@ class Photo {
         this.photo_div_title.innerHTML = photo.title;
         this.photo_div_div_name.innerHTML = photo.nick;
         this.photo_div_div_likes.innerHTML = photo.likes;
-        this.photo_div_div_type.innerHTML = "DO ZMIANY";
+        this.photo_div_div_type.innerHTML = "Model(ka)";
         this.photo_div_div_comments.innerHTML = photo.comments;
 
         return this.photo_div;
