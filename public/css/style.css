@@ -4,9 +4,15 @@
     padding: 0;
 }
 
-/* :root {
+:root {
+    /* --color-dark: #2C1A1D;
+    --color-light: #6C534E;
+    --color-outline: #55413d; */
 
-} */
+    --color-dark: #3d394d;
+    --color-light: #605770;
+    --color-outline: #494253;
+}
 
 img {
     display: block;
@@ -27,7 +33,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    background-color: #2C1A1D;
+    background-color: var(--color-dark);
     /* background-color: #443850; */
 }
 
@@ -50,7 +56,7 @@ body {
 
     background-color: #F6F6F6;
     border: solid black 1px;
-    border-radius: 2%;
+    border-radius: 5px;
 }
 
 .login-form > form {
@@ -114,7 +120,7 @@ header {
     justify-content: center;
     align-items: center;
 
-    background-color: #2C1A1D;
+    background-color: var(--color-dark);
 }
 
 .home-header-bottom {
@@ -124,7 +130,7 @@ header {
     justify-content: center;
     align-items: center;
 
-    background-color: #6C534E;
+    background-color: var(--color-light);
 }
 
 .home-header {
@@ -163,14 +169,15 @@ nav.home-nav > a {
     justify-content: center;
     align-items: center;
 
-    color: #dcdcdc;
+    color: #FFFFFF;
     text-decoration: none;
     font: normal normal normal 18px/25px Segoe UI;
 }
 
 nav.home-nav > a:hover {
-    /* background-color: #2C1A1D; */
-    color: white;
+    /* background-color: var(--color-dark); */
+    background-color: var(--color-outline);
+    transition: 0.5s;
 }
 
 .home-content {
@@ -194,7 +201,7 @@ nav.home-nav > a:hover {
 
     border: 14px solid whitesmoke;
     border-radius: 50%;
-    border-top: 14px solid #6C534E;
+    border-top: 14px solid var(--color-light);
     animation: spin 2s linear infinite;
 }
   
@@ -400,8 +407,13 @@ p.home-comments::before {
     height: 30px;
     margin: 2px 0 0 0;
     float: right;
-
+    
     font: normal normal normal 14px/21px Segoe UI;
+    color:white;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-outline);
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 #like {
@@ -422,7 +434,7 @@ p.home-comments::before {
 }
 
 .upload-box > p {
-    font: normal normal normal 20px/27px Segoe UI;
+    font: normal normal normal 24px/31px Segoe UI;
 }
 
 .upload-box > form {
@@ -447,8 +459,12 @@ p.home-comments::before {
     margin: 10px 0 0 0;
 
     font: normal normal normal 14px/21px Segoe UI;
+    color:white;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-outline);
+    border-radius: 5px;
+    cursor: pointer;
 }
-
 
 
 

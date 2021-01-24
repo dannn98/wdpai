@@ -15,7 +15,7 @@
             ?>
             <div class="home-content">
                 <div class="upload-box">
-                    <p>UPLOAD PHOTO</p>
+                    <p>Upload your photo</p>
                     <form action="upload" method="POST" enctype="multipart/form-data">
                         <div class="login-message">
                             <?php

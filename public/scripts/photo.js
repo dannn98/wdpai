@@ -19,7 +19,7 @@ form.addEventListener("submit", e => {
 like.addEventListener("click", e => {
     e.preventDefault();
 
-    const data = { id_photo: document.getElementById("id_photo").value };
+    const data = { id_photo: document.querySelector("#id_photo").value };
 
     fetch('/like', {
         method: 'POST',

@@ -28,3 +28,20 @@
         </div>
     </body>
 </html>
+
+<template id="photo-template">
+    <div class="home-content-box-photo">
+        <div class="home-content-box-photo-title"></div>
+        <a href="/photo/id">
+            <div class="home-content-box-photo-img">
+                <img src="public/uploads/1.jpg">
+            </div>
+        </a>
+        <div class="home-content-box-photo-info">
+            <p class="home-name">JakiśNick</p>
+            <p class="home-likes">943</p>
+            <p class="home-type">Model</p>
+            <p class="home-comments">41</p>
+        </div>
+    </div>
+</template>
