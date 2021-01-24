@@ -105,4 +105,37 @@ class PhotoRepository extends Repository
 
         return $result;
     }
+
+    public function like($id_photo) {
+        $id_user = AuthenticationGuard::getCurrentUserId();
+
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM photos_likes WHERE id_photo = :id_photo and id_user = :id_user
+        ');
+        $stmt->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
+        $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result === false) {
+            $stmt = $this->database->connect()->prepare('
+                INSERT INTO photos_likes VALUES (?, ?)
+            ');
+            $stmt->execute([
+                $id_photo,
+                $id_user
+            ]);
+            return 1;
+        }
+        else {
+            $stmt = $this->database->connect()->prepare('
+                DELETE FROM photos_likes WHERE id_photo = :id_photo and id_user = :id_user
+            ');
+            $stmt->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $stmt->execute();
+            return -1;
+        }
+    }
 }

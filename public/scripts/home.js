@@ -44,36 +44,34 @@ class Photo {
     }
 }
 
-fetch('http://localhost:8080/photos', {
-    method: 'GET',
+fetch('/photos')
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+    //Równe rozkładanie obrazków po kolumnach
+    const col_1 = document.getElementById("col-1");
+    const col_2 = document.getElementById("col-2");
+    const col_3 = document.getElementById("col-3");
+    for(let i = 0, c = 1; i < data.length; i++, c++) {
+        let photo = new Photo();
+        if(c === 3){
+            col_3.appendChild(photo.addPhoto(data[i]));
+            c = 0;
+        }
+        else if(c === 2) {
+            col_2.appendChild(photo.addPhoto(data[i]));
+        }
+        else {
+            col_1.appendChild(photo.addPhoto(data[i]));
+        }
+    }
+
+    document.getElementById("loader").style.display = "none";
+    let cols = document.getElementsByClassName("home-content-box-col");
+    for(let i = 0; i < cols.length; i++) {
+        cols[i].style.display = "block";
+    }
 })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        //Równe rozkładanie obrazków po kolumnach
-        const col_1 = document.getElementById("col-1");
-        const col_2 = document.getElementById("col-2");
-        const col_3 = document.getElementById("col-3");
-        for(let i = 0, c = 1; i < data.length; i++, c++) {
-            let photo = new Photo();
-            if(c === 3){
-                col_3.appendChild(photo.addPhoto(data[i]));
-                c = 0;
-            }
-            else if(c === 2) {
-                col_2.appendChild(photo.addPhoto(data[i]));
-            }
-            else {
-                col_1.appendChild(photo.addPhoto(data[i]));
-            }
-        }
-        
-        document.getElementById("loader").style.display = "none";
-        let cols = document.getElementsByClassName("home-content-box-col");
-        for(let i = 0; i < cols.length; i++) {
-            cols[i].style.display = "block";
-        }
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+.catch((error) => {
+    console.error('Error:', error);
+});

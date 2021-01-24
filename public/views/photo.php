@@ -2,7 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-        <script type="text/javascript" src="/public/scripts/photo_comment.js" defer></script>
+        <script type="text/javascript" src="/public/scripts/photo.js" defer></script>
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <title>PHOTO PAGE</title>
     </head>
@@ -19,8 +19,8 @@
                     <div class="photo-content-box-properties">
                         <div class="photo-properties-box">
                             <h1><?php echo $photo['nick']; ?></h1>
-                            <p>DO ZMIANY</p>
-                            <h2><?php echo $photo['likes'] ?></h2>
+                            <p>Model(ka)</p>
+                            <h2 id="like" ><?php echo $photo['likes'] ?></h2>
                             <form class="photo-add-comment" action="comment" method="POST">
                                 <div class="login-message">
                                     <?php
@@ -30,7 +30,7 @@
                                             }
                                     ?>
                                 </div>
-                                <input type="hidden" name="id_photo" value="<?php echo $photo['id_photo']; ?>">
+                                <input id="id_photo" type="hidden" name="id_photo" value="<?php echo $photo['id_photo']; ?>">
                                 <textarea id="comment" name="comment" placeholder="Add comment"></textarea>
                                 <button type="submit">Dodaj</button>
                             </form>

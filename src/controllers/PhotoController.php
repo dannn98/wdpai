@@ -82,6 +82,18 @@ class PhotoController extends AppController {
         }
     }
 
+    public function like() {
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
+
+        if($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            echo json_encode($this->photoRepository->like($decoded['id_photo']));
+        }
+    }
+
     private function validate(array $file): bool {
         if($file['size'] > self::MAX_FILE_SIZE) {
             $this->messages[] = 'File is too large for destination file system';

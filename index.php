@@ -20,6 +20,7 @@ Routing::route('register', 'SecurityController', 'register', 'POST');
 Routing::route('home', 'DefaultController', 'home', 'GET');
 Routing::route('photos', 'PhotoController', 'photos', 'GET');
 Routing::route('photo', 'PhotoController', 'photo', 'GET');
+Routing::route('like', 'PhotoController', 'like', 'POST');
 Routing::route('photo/comment', 'PhotoController', 'addComment', 'POST');
 
 Routing::route('upload', 'DefaultController', 'upload', 'GET');

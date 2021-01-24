@@ -404,6 +404,11 @@ p.home-comments::before {
     font: normal normal normal 14px/21px Segoe UI;
 }
 
+#like {
+    color: rosybrown;
+    cursor: pointer;
+}
+
 /* UPLOAD PHOTO */
 
 .upload-box {
