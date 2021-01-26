@@ -38,7 +38,7 @@
             </div>
         </a>
         <div class="home-content-box-photo-info">
-            <p class="home-name">JakiśNick</p>
+            <p class="home-name">Nick</p>
             <p class="home-likes">943</p>
             <p class="home-type">Model</p>
             <p class="home-comments">41</p>
