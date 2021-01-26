@@ -96,7 +96,8 @@ class PhotoRepository extends Repository
                    created_at as created_at
             FROM photos_comments
             JOIN users u on u.id = photos_comments.id_user
-            WHERE photos_comments.id_photo = :id_photo;
+            WHERE photos_comments.id_photo = :id_photo
+            ORDER BY created_at DESC
         ');
         $stmt->bindParam(':id_photo', $id_photo, PDO::PARAM_INT);
         $stmt->execute();

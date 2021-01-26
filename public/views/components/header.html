@@ -2,10 +2,13 @@
     <div class="home-header-top">
         <div class="home-header">
             <img src="/public/img/logo-white.svg">
-            <div class="home-header-panel">
-                <a href="/profil"><img src="/public/img/user.svg"></a>
+            <div class="home-header-panel burger-none">
+                <a href="/profile"><img src="/public/img/user.svg"></a>
                 <a href="/logout"><img src="/public/img/logout.svg"></a>
             </div> 
+            <div class="burger-display" onclick="burgerMenu()">
+                <img src="/public/img/hamburger.svg">
+            </div>
         </div>
     </div>
     <div class="home-header-bottom">
@@ -17,3 +20,19 @@
     </div>
 </header>
 <div class="home-under-header"></div>
+<div class="burger-menu">
+    <a href="/home">HOME</a>
+    <a href="/">SEARCH</a>
+    <a href="/upload">UPLOAD</a>
+    <a href="/profile">MY ACCOUNT</a>
+    <a href="/logout">LOGOUT</a>
+</div>
+
+<script>
+    const button = document.querySelector(".burger-display");
+    const menu = document.querySelector(".burger-menu");
+
+    button.addEventListener('click', () => {
+        menu.classList.toggle('show-menu');
+    });
+</script>
